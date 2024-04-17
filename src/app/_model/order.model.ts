@@ -9,5 +9,6 @@ export interface MyOrderDetails {
     orderStatus: string;
     orderAmount: number;
     product: Product;
+    transactionId: string;
     user: any;
 }

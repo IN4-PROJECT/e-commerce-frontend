@@ -23,8 +23,8 @@ export class MyOrdersComponent implements OnInit {
     this.getOrderDetails();
   }
 
-  facture(orderId: any) {
-    this.http.get('http://localhost:9090/pdfInvoice/'+orderId, { responseType: 'blob' }).subscribe(res => {
+  facture(transactionId: any) {
+    this.http.get('http://localhost:9090/pdfInvoice2/'+transactionId, { responseType: 'blob' }).subscribe(res => {
       const file = new Blob([res], { type: 'application/pdf' });
       saveAs(file, 'Invoice.pdf');
     });
