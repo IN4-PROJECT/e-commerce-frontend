@@ -33,7 +33,7 @@ export class ShowProductDetailsComponent implements OnInit {
   }
 
   getReport() {
-    this.http.get('http://localhost:9090/pdf', { responseType: 'blob' }).subscribe(res => {
+    this.http.get('https://determined-caring-production.up.railway.app/pdf', { responseType: 'blob' }).subscribe(res => {
       const file = new Blob([res], { type: 'application/pdf' });
       saveAs(file, 'ProductsList.pdf');
     });

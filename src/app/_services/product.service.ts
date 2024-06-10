@@ -14,60 +14,60 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   public createTransaction(amount) {
-    return this.httpClient.get("http://localhost:9090/createTransaction/"+amount);
+    return this.httpClient.get("https://determined-caring-production.up.railway.app/createTransaction/"+amount);
   }
 
   public markAsDelivered(orderId) {
-      return this.httpClient.get("http://localhost:9090/markOrderAsDelivered/"+orderId)
+      return this.httpClient.get("https://determined-caring-production.up.railway.app/markOrderAsDelivered/"+orderId)
   }
 
   public getAllOrderDetailsForAdmin(status: string): Observable<MyOrderDetails[]> {
-    return this.httpClient.get<MyOrderDetails[]>("http://localhost:9090/getAllOrderDetails/"+status);
+    return this.httpClient.get<MyOrderDetails[]>("https://determined-caring-production.up.railway.app/getAllOrderDetails/"+status);
   }
 
   public getMyOrders(): Observable<MyOrderDetails[]> {
-    return this.httpClient.get<MyOrderDetails[]>("http://localhost:9090/getOrderDetails");
+    return this.httpClient.get<MyOrderDetails[]>("https://determined-caring-production.up.railway.app/getOrderDetails");
   }
 
   public deleteCartItem(cartId) {
-    return this.httpClient.delete("http://localhost:9090/deleteCartItem/"+cartId);
+    return this.httpClient.delete("https://determined-caring-production.up.railway.app/deleteCartItem/"+cartId);
   }
 
   public addProduct(product: FormData) {
-    return this.httpClient.post<Product>("http://localhost:9090/addNewProduct", product);
+    return this.httpClient.post<Product>("https://determined-caring-production.up.railway.app/addNewProduct", product);
   }
 
   public getAllProducts(pageNumber, searchKeyword: string = "") {
-    return this.httpClient.get<Product[]>("http://localhost:9090/getAllProducts?pageNumber="+pageNumber+"&searchKey="+searchKeyword);
+    return this.httpClient.get<Product[]>("https://determined-caring-production.up.railway.app/getAllProducts?pageNumber="+pageNumber+"&searchKey="+searchKeyword);
   }
 
   public getProductDetailsById(productId) {
-    return this.httpClient.get<Product>("http://localhost:9090/getProductDetailsById/"+productId);
+    return this.httpClient.get<Product>("https://determined-caring-production.up.railway.app/getProductDetailsById/"+productId);
   }
 
   public deleteProduct(productId: number) {
-    return this.httpClient.delete("http://localhost:9090/deleteProductDetails/"+productId);
+    return this.httpClient.delete("https://determined-caring-production.up.railway.app/deleteProductDetails/"+productId);
   }
 
   public getProductDetails(isSingleProductCheckout, productId) {
-    return this.httpClient.get<Product[]>("http://localhost:9090/getProductDetails/"+isSingleProductCheckout+"/"+productId);
+    return this.httpClient.get<Product[]>("https://determined-caring-production.up.railway.app/getProductDetails/"+isSingleProductCheckout+"/"+productId);
   }
 
   public placeOrder(orderDetails: OrderDetails, isCartCheckout) {
-    return this.httpClient.post("http://localhost:9090/placeOrder/"+isCartCheckout, orderDetails);
+    return this.httpClient.post("https://determined-caring-production.up.railway.app/placeOrder/"+isCartCheckout, orderDetails);
   }
 
   public addToCart(productId) {
-    return this.httpClient.get("http://localhost:9090/addToCart/"+productId);
+    return this.httpClient.get("https://determined-caring-production.up.railway.app/addToCart/"+productId);
   }
 
   public getCartDetails() {
-    return this.httpClient.get("http://localhost:9090/getCartDetails");
+    return this.httpClient.get("https://determined-caring-production.up.railway.app/getCartDetails");
   }
 
   public printProduct = (report: Report): Observable<StringResult> => {
     const data = JSON.stringify(report);
-    return this.httpClient.post<StringResult>("http://localhost:9090/printProduct", data, {
+    return this.httpClient.post<StringResult>("https://determined-caring-production.up.railway.app/printProduct", data, {
       headers: new HttpHeaders({
         'Content-type' : 'application/json'
       })

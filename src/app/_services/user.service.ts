@@ -6,7 +6,7 @@ import { UserAuthService } from './user-auth.service';
   providedIn: 'root',
 })
 export class UserService {
-  PATH_OF_API = 'http://localhost:9090';
+  PATH_OF_API = 'https://determined-caring-production.up.railway.app';
 
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
   constructor(
